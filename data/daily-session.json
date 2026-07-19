@@ -1,133 +1,69 @@
 {
-  "date": "2026-07-19",
-  "day": 1,
+  "date": "2026-07-20",
+  "day": 2,
   "totalDays": 62,
   "sessionMinutes": 60,
   "phase": "PHASE 01 · BASELINE",
-  "mode": "BD · REGULATORY",
-  "abilityTarget": "抓住“数据尚未成熟”背后的真实监管立场",
+  "mode": "MEDICAL · SAFETY",
+  "abilityTarget": "听清安全性讨论中的责任边界，以及“所有、仅限、除外”如何改变行动。",
   "source": {
     "title": "Panel Discussion",
     "organization": "U.S. Food and Drug Administration",
-    "speaker": "Jeffrey Summers, MD, and Marc Theoret, MD (FDA panel)",
-    "url": "https://www.youtube.com/watch?v=4ZACrWciZzM&t=1337s",
-    "videoId": "4ZACrWciZzM",
-    "start": 1337,
-    "end": 1457,
-    "window": "22:17–24:17",
-    "description": "FDA panel Q&A on when accelerated approval becomes an appropriate development discussion."
+    "speaker": "Linda Forsyth, MD, and Debra Catterson, RPh (FDA panel)",
+    "url": "https://www.youtube.com/watch?v=J1o14z94G3M&t=270s",
+    "videoId": "J1o14z94G3M",
+    "start": 270,
+    "end": 390,
+    "window": "04:30–06:30",
+    "description": "FDA panel Q&A on SAE reporting across treatment arms, ownership, and the distinction between ANDA and bio-IND contexts."
   },
   "coldListenQuestions": [
-    {
-      "label": "TOPIC / DECISION",
-      "question": "提问者希望FDA在什么开发阶段讨论什么问题？",
-      "answer": "是否应在Phase 1前或Phase 1后，与FDA讨论accelerated approval。"
-    },
-    {
-      "label": "SPEAKER POSITION",
-      "question": "监管者认为在pre-IND/IND阶段直接提出该问题是否合适？",
-      "answer": "通常不合适；在项目一开始就要求确认accelerated approval属于premature question。"
-    },
-    {
-      "label": "EVIDENCE / DATA",
-      "question": "什么样的早期证据可能使讨论变得合理？",
-      "answer": "明确靶点、富集且相对同质的人群、清楚的自然史，以及非常强的早期临床反应。"
-    },
-    {
-      "label": "RISK / UNCERTAINTY",
-      "question": "说话人为什么反对过早聚焦审批路径？",
-      "answer": "漂亮的早期结果多数不会成为现实，且团队可能忽略CMC、毒理和基础开发门槛。"
-    },
-    {
-      "label": "ACTION / OWNER",
-      "question": "项目团队现阶段更应该优先做什么？",
-      "answer": "研究科学依据、确认靶点和人群、产生可信数据，并把注意力放回CMC和毒理等关键基础。"
-    }
+    {"label": "TOPIC / DECISION", "question": "提问者要确认哪一类受试者组的SAE是否必须报告，以及谁承担提交责任？", "answer": "问题聚焦参比治疗组SAE是否也须报告、由谁提交，以及如何避免重复病例。"},
+    {"label": "SPEAKER POSITION", "question": "说话人对参比组、试验组和安慰剂组SAE的立场是什么？", "answer": "三类治疗组的SAE都应报告；参比组不构成例外。"},
+    {"label": "EVIDENCE / DATA", "question": "后半段用哪种研究/申报属性来解释报告路径为何不同？", "answer": "关键区分是IND-exempt的BE/BA研究与ANDA或bio-IND情境，而不是单纯看因果关系。"},
+    {"label": "RISK / UNCERTAINTY", "question": "“requirements are the same”这一假设为何不成立？最容易误听的限定是什么？", "answer": "ANDA与bio-IND要求并不相同；IND-exempt情境、国外研究和最终ANDA提交都会改变具体路径。"},
+    {"label": "ACTION / OWNER", "question": "说话人把SAE报告的主责任放在哪里？现场与申办方之间需要建立什么？", "answer": "申请人承担整体SAE报告责任；需与研究者和中心建立及时、可追溯的沟通流程。"}
   ],
   "secondPassTargets": [
-    {
-      "tag": "NUMBER",
-      "prompt": "出现了哪些具体数字或比例？",
-      "hint": "5 complete responses / first 10 patients；94% of the time"
-    },
-    {
-      "tag": "NEGATION",
-      "prompt": "哪些否定改变了结论？",
-      "hint": "would not approach the agency early；that's not reality"
-    },
-    {
-      "tag": "CONDITION",
-      "prompt": "什么条件满足后，立场才可能改变？",
-      "hint": "if we see great data；depending on that data"
-    },
-    {
-      "tag": "CONTRAST",
-      "prompt": "说话人把哪个目标与哪些当前重点作了对比？",
-      "hint": "accelerated approval vs CMC / toxicology / appropriate hurdles"
-    },
-    {
-      "tag": "SPEAKER CHANGE",
-      "prompt": "第二位说话人从哪里开始补充？",
-      "hint": "And just to add to that..."
-    }
+    {"tag": "NUMBER", "prompt": "本段没有关键数字；你是否听到了更关键的范围词，而没有硬找数字？", "hint": "all SAEs；reference, test, or placebo arm"},
+    {"tag": "NEGATION", "prompt": "哪一句否定直接推翻了“ANDA与bio-IND相同”的默认假设？", "hint": "the short answer is no, they're not the same"},
+    {"tag": "CONDITION", "prompt": "哪些条件或例外会改变SAE/AＥ信息走向FDA还是ANDA的方式？", "hint": "IND-exempt BE/BA studies；except for foreign studies；when the ANDA is submitted"},
+    {"tag": "CONTRAST", "prompt": "说话人把哪两种报告义务作了区分？", "hint": "all SAEs to FDA vs all AEs included in the eventual ANDA submission"},
+    {"tag": "SPEAKER CHANGE", "prompt": "新问题转给谁？她开头用什么句子先给出结论？", "hint": "So Deborah...；the short answer is no"}
   ],
   "blindSpots": [
-    "premature并不是否定accelerated approval，而是否定现在就把它当作确定路径",
-    "great data只是触发进一步讨论的条件，不是监管承诺",
-    "说话人用CMC和toxicology把讨论拉回当前阶段真正的开发风险"
+    "参比组SAE不是因为与研究药无关就可从申办方安全性闭环中消失。",
+    "all、only、regardless和except是本段真正决定结论的词，不能被“SAE”这个熟词掩盖。",
+    "FDA panel的具体ANDA/IND-exempt语境不能机械外推到所有全球研究；训练重点是责任链与限定条件。"
   ],
   "microClip": {
-    "start": 1377,
-    "end": 1389,
-    "window": "22:57–23:09",
-    "duration": "12 SEC",
-    "transcript": "In general, that's a premature question from the get-go. Literally, if we see great data, we're going to probably come to you.",
-    "translation": "一般来说，从项目一开始就问这个问题还为时过早。真正看到很强的数据后，我们很可能会主动与你们讨论。",
+    "start": 290,
+    "end": 300,
+    "window": "04:50–05:00",
+    "duration": "10 SEC",
+    "transcript": "Yes, absolutely. Serious adverse events from the reference treatment arm must be submitted as well.",
+    "translation": "是，当然。参比治疗组的严重不良事件也必须提交。",
     "pronunciation": [
-      {
-        "label": "LINK",
-        "text": "from_the get-go",
-        "note": "from the连读；重音落在GET-GO"
-      },
-      {
-        "label": "CONTRAST",
-        "text": "IF we see GREAT DATA",
-        "note": "用条件重音标出立场改变的门槛"
-      }
+      {"label": "LINK", "text": "events_from the reference", "note": "events与from连读；不要把from吞掉，否则会漏掉“来自哪一组”。"},
+      {"label": "STRESS", "text": "reference TREATment ARM · MUST", "note": "组别与must承载责任结论；重音比逐字清晰更重要。"}
     ]
   },
   "speaking": {
-    "prompt": "合作方希望在一个尚无患者疗效数据的罕见癫痫Phase 1项目中，提前把accelerated approval作为核心BD价值主张。你会如何回应？",
+    "prompt": "在一项全球罕见癫痫研究中，中心认为参比治疗组的住院SAE与研究药无关，因此只需留在病历，不必进入申办方安全性闭环。请在会议上回应。先按方案和适用法规限定结论，不要把本段FDA generic-drug语境当作全球研究的直接规则。",
     "prepLabels": [
-      {
-        "key": "position",
-        "label": "POSITION",
-        "placeholder": "你的当前结论"
-      },
-      {
-        "key": "evidence",
-        "label": "EVIDENCE",
-        "placeholder": "已有数据真正支持什么"
-      },
-      {
-        "key": "risk",
-        "label": "RISK / UNCERTAINTY",
-        "placeholder": "最大推断跳跃或风险"
-      },
-      {
-        "key": "action",
-        "label": "ACTION / ASK",
-        "placeholder": "你建议的下一步或追问"
-      }
+      {"key": "position", "label": "POSITION", "placeholder": "你的当前结论"},
+      {"key": "evidence", "label": "EVIDENCE", "placeholder": "方案、安全性计划或事实真正支持什么"},
+      {"key": "risk", "label": "RISK / UNCERTAINTY", "placeholder": "不能直接外推或最可能漏报的风险"},
+      {"key": "action", "label": "ACTION / ASK", "placeholder": "你建议的owner、时限或澄清问题"}
     ],
     "followUps": [
-      "If the preclinical efficacy is unusually strong, why shouldn't we price in accelerated approval now?",
-      "What specific Phase 1 signal would make you change your position?"
+      "If the investigator considers the event unrelated, why should the sponsor still capture it?",
+      "Who owns the action if the site and a partner both report the same SAE?"
     ],
-    "meetingMove": "限定结论",
+    "meetingMove": "澄清责任与时限",
     "sentenceFrames": [
-      "I would separate regulatory ambition from evidence readiness.",
-      "The current data support ___, but they do not yet justify ___."
+      "Just to confirm, the sponsor owns ___, while the site is responsible for ___.",
+      "Before we close this, can we name the owner and the reporting timeline?"
     ]
   }
 }
