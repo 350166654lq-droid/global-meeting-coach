@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#121917" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Meeting Coach" />
+    <meta
+      name="description"
+      content="A private, local-first training cockpit for global medical and BD meetings."
+    />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/app-icon-180.png" />
+    <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Global Meeting Coach</title>
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <div id="app" class="app-shell">
+      <aside class="rail" aria-label="主导航">
+        <button class="brand" data-view="today" aria-label="返回今日训练">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          <span class="brand-copy">
+            <strong>MEETING<br />COACH</strong>
+            <small>GLOBAL / 62</small>
+          </span>
+        </button>
+
+        <nav class="rail-nav">
+          <button class="nav-item is-active" data-view="today">
+            <span class="nav-index">01</span>
+            <span>今日训练</span>
+          </button>
+          <button class="nav-item" data-view="roadmap">
+            <span class="nav-index">02</span>
+            <span>八周路线</span>
+          </button>
+          <button class="nav-item" data-view="progress">
+            <span class="nav-index">03</span>
+            <span>能力进展</span>
+          </button>
+          <button class="nav-item" data-view="library">
+            <span class="nav-index">04</span>
+            <span>训练素材</span>
+          </button>
+        </nav>
+
+        <div class="rail-status">
+          <div class="status-pulse" aria-hidden="true"></div>
+          <div>
+            <small>LOCAL FIRST</small>
+            <span>录音留在本机</span>
+          </div>
+        </div>
+
+        <div class="profile-chip">
+          <span class="avatar">LQ</span>
+          <span><strong>Lawrence</strong><small>CRP / MM</small></span>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div class="mobile-brand">
+            <span class="brand-mark"><span></span><span></span><span></span></span>
+            <strong>MEETING COACH</strong>
+          </div>
+          <div class="day-context">
+            <span id="phase-kicker">PHASE 01 · BASELINE</span>
+            <h1 id="page-title">今日训练</h1>
+          </div>
+          <div class="topbar-actions">
+            <button id="import-session-button" class="quiet-button" type="button">
+              导入今日任务
+            </button>
+            <button id="restore-daily-session-button" class="quiet-button" type="button" title="清除本地导入内容并恢复自动每日任务">
+              恢复自动任务
+            </button>
+            <input id="import-session-input" type="file" accept="application/json" hidden />
+            <div class="day-counter" aria-label="训练进度">
+              <span>DAY</span>
+              <strong id="day-number">01</strong>
+              <small id="total-days">/ 62</small>
+            </div>
+          </div>
+        </header>
+
+        <section id="view-today" class="view is-visible" data-view-panel="today">
+          <div class="today-grid">
+            <section class="mission-card reveal-card">
+              <div class="mission-header">
+                <div>
+                  <span class="eyebrow">TODAY'S MISSION</span>
+                  <h2 id="ability-target">抓住“数据尚未成熟”背后的真实监管立场</h2>
+                </div>
+                <span id="session-mode" class="mode-chip">BD · REGULATORY</span>
+              </div>
+
+              <div class="source-stage">
+                <div id="media-frame" class="media-frame" aria-live="polite"></div>
+                <div class="source-caption">
+                  <div>
+                    <span id="source-organization">U.S. FDA</span>
+                    <h3 id="source-title">Panel Discussion</h3>
+                    <p id="source-speaker">FDA Oncology Center of Excellence panel</p>
+                  </div>
+                  <div class="source-time">
+                    <span>TRAINING WINDOW</span>
+                    <strong id="source-window">22:17–24:17</strong>
+                    <a id="source-link" href="#" target="_blank" rel="noreferrer">打开原视频 ↗</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mission-rule">
+                <span class="rule-number">01</span>
+                <p><strong>前两遍不要看字幕。</strong>你不是在找每个词，而是在重建会议的决策结构。</p>
+              </div>
+            </section>
+
+            <aside class="session-console reveal-card">
+              <div class="console-topline">
+                <span>SESSION CLOCK</span>
+                <span id="clock-state">READY</span>
+              </div>
+              <div id="session-clock" class="session-clock">60:00</div>
+              <div class="clock-controls">
+                <button id="clock-toggle" class="primary-round" type="button">开始训练</button>
+                <button id="clock-reset" class="icon-button" type="button" aria-label="重置计时">↺</button>
+              </div>
+
+              <div class="phase-stack" id="phase-stack">
+                <button class="phase-row is-current" data-scroll-target="cold-listen">
+                  <span>01</span><strong>Cold listen</strong><small>08 min</small>
+                </button>
+                <button class="phase-row" data-scroll-target="second-pass">
+                  <span>02</span><strong>Signal hunt</strong><small>10 min</small>
+                </button>
+                <button class="phase-row" data-scroll-target="reality-check">
+                  <span>03</span><strong>Reality check</strong><small>10 min</small>
+                </button>
+                <button class="phase-row" data-scroll-target="micro-clip">
+                  <span>04</span><strong>Micro loop</strong><small>10 min</small>
+                </button>
+                <button class="phase-row" data-scroll-target="response-lab">
+                  <span>05</span><strong>Response lab</strong><small>15 min</small>
+                </button>
+                <button class="phase-row" data-scroll-target="scorecard">
+                  <span>06</span><strong>Debrief</strong><small>07 min</small>
+                </button>
+              </div>
+
+              <div class="streak-card">
+                <span class="streak-flame">↗</span>
+                <div><small>CURRENT STREAK</small><strong id="streak-count">0 days</strong></div>
+                <div class="week-dots" id="week-dots" aria-label="最近七天训练"></div>
+              </div>
+            </aside>
+          </div>
+
+          <section id="cold-listen" class="training-section reveal-card">
+            <div class="section-number">01</div>
+            <div class="section-heading">
+              <span class="eyebrow">NO CAPTIONS · 1.0×</span>
+              <h2>Cold listen</h2>
+              <p>第一遍只回答五件事。用中文或英文关键词都可以，先把理解能力和表达能力分开。</p>
+            </div>
+            <div id="cold-questions" class="question-grid"></div>
+          </section>
+
+          <section id="second-pass" class="training-section signal-section reveal-card">
+            <div class="section-number">02</div>
+            <div class="section-heading">
+              <span class="eyebrow">SECOND PASS · SIGNAL HUNT</span>
+              <h2>听逻辑词，不追生词</h2>
+              <p>第二遍仍然不看字幕。专门监听可能改变医学或BD结论的信号。</p>
+            </div>
+            <div id="signal-checklist" class="signal-grid"></div>
+          </section>
+
+          <section id="reality-check" class="training-section dark-section reveal-card">
+            <div class="section-number">03</div>
+            <div class="section-heading">
+              <span class="eyebrow">TRANSCRIPT ALLOWED</span>
+              <h2>Reality check</h2>
+              <p>完成前两遍后再解锁。这里不是答案背诵区，而是检查你漏掉了哪种信号。</p>
+            </div>
+            <button id="reveal-answers" class="reveal-button" type="button">
+              <span>我已完成两遍无字幕听力</span><strong>解锁核对区 →</strong>
+            </button>
+            <div id="answer-panel" class="answer-panel" hidden></div>
+          </section>
+
+          <section id="micro-clip" class="training-section reveal-card">
+            <div class="section-number">04</div>
+            <div class="section-heading">
+              <span class="eyebrow">10–20 SEC · MICRO LOOP</span>
+              <h2>让关键句块进入口腔</h2>
+              <p>短片段只负责节奏和句块自动化，不承担整场会议理解。</p>
+            </div>
+            <div class="micro-grid">
+              <div class="micro-player">
+                <div id="micro-media-frame" class="media-frame compact"></div>
+                <div class="loop-count">
+                  <span>LOOP</span>
+                  <button class="loop-dot is-done" aria-label="第1遍"></button>
+                  <button class="loop-dot" aria-label="第2遍"></button>
+                  <button class="loop-dot" aria-label="第3遍"></button>
+                  <button class="loop-dot" aria-label="第4遍"></button>
+                </div>
+              </div>
+              <div class="micro-copy">
+                <span id="micro-window" class="micro-time">22:57–23:09 · 12 SEC</span>
+                <blockquote id="micro-transcript"></blockquote>
+                <p id="micro-translation" class="translation"></p>
+                <div id="pronunciation-points" class="pronunciation-points"></div>
+              </div>
+            </div>
+          </section>
+
+          <section id="response-lab" class="training-section response-section reveal-card">
+            <div class="section-number">05</div>
+            <div class="section-heading">
+              <span class="eyebrow">SPEAK · COMPRESS · REPEAT</span>
+              <h2>Response lab</h2>
+              <p id="speaking-prompt">只写四个bullet，然后开口。不要写完整稿。</p>
+            </div>
+
+            <div class="response-layout">
+              <div class="prep-board">
+                <div class="prep-header">
+                  <span>4-BULLET PREP</span>
+                  <small>最多 90 秒准备</small>
+                </div>
+                <div id="prep-fields" class="prep-fields"></div>
+              </div>
+
+              <div class="recorder-board">
+                <div class="recorder-header">
+                  <div><span>VOICE RECORDER</span><small>录音仅保存在当前设备</small></div>
+                  <span id="mic-status" class="mic-status">MIC OFF</span>
+                </div>
+                <div class="round-tabs" role="tablist" aria-label="限时表达轮次">
+                  <button class="round-tab is-active" data-seconds="90">90 SEC</button>
+                  <button class="round-tab" data-seconds="60">60 SEC</button>
+                  <button class="round-tab" data-seconds="45">45 SEC</button>
+                </div>
+                <div class="record-face">
+                  <div id="record-timer" class="record-timer">01:30</div>
+                  <button id="record-button" class="record-button" type="button" aria-label="开始录音">
+                    <span></span>
+                  </button>
+                  <p id="record-instruction">准备好后开始；计时结束会自动停止</p>
+                </div>
+                <div id="recordings-list" class="recordings-list"></div>
+              </div>
+            </div>
+
+            <div class="follow-up-zone">
+              <div class="follow-up-intro">
+                <span class="eyebrow">3-SECOND START</span>
+                <h3>临场追问</h3>
+                <p>点击问题后，倒计时3秒。第一句话必须先出来，哪怕不是完美句子。</p>
+              </div>
+              <div id="follow-up-cards" class="follow-up-cards"></div>
+            </div>
+
+            <div class="move-of-day">
+              <span class="move-label">MEETING MOVE OF THE DAY</span>
+              <div>
+                <h3 id="meeting-move-title">限定结论</h3>
+                <div id="sentence-frames" class="sentence-frames"></div>
+              </div>
+            </div>
+          </section>
+
+          <section id="scorecard" class="training-section score-section reveal-card">
+            <div class="section-number">06</div>
+            <div class="section-heading">
+              <span class="eyebrow">DEBRIEF · 7 MIN</span>
+              <h2>今天不是“感觉如何”，而是留下数据</h2>
+              <p>每次只记录少量指标，两个月后你会看到真正的变化，而不是模糊的自信感。</p>
+            </div>
+            <form id="score-form" class="score-form">
+              <div class="score-slider-card">
+                <label for="listening-score">LISTENING <strong id="listening-score-value">6</strong><span>/10</span></label>
+                <input id="listening-score" type="range" min="0" max="10" value="6" />
+                <div class="score-scale"><span>漏掉主线</span><span>抓住决策结构</span></div>
+              </div>
+              <div class="score-slider-card">
+                <label for="speaking-score">SPEAKING <strong id="speaking-score-value">6</strong><span>/10</span></label>
+                <input id="speaking-score" type="range" min="0" max="10" value="6" />
+                <div class="score-scale"><span>依赖完整稿</span><span>立场清楚且闭环</span></div>
+              </div>
+              <div class="metric-fields">
+                <label>首句启动时间<input id="start-latency" type="number" min="0" max="30" step="0.5" placeholder="秒" /></label>
+                <label>最长卡顿<input id="longest-pause" type="number" min="0" max="30" step="0.5" placeholder="秒" /></label>
+                <label class="toggle-label">
+                  <span>依赖完整讲稿</span>
+                  <input id="script-dependent" type="checkbox" />
+                  <i aria-hidden="true"></i>
+                </label>
+              </div>
+              <label class="reflection-field">
+                <span>今天唯一需要修正的点</span>
+                <textarea id="daily-reflection" rows="2" placeholder="例：听到了数字，但漏掉了前面的否定。"></textarea>
+              </label>
+              <button class="complete-button" type="submit">
+                <span>完成 Day <b id="complete-day-number">01</b></span>
+                <strong>保存训练记录 →</strong>
+              </button>
+            </form>
+          </section>
+        </section>
+
+        <section id="view-roadmap" class="view" data-view-panel="roadmap">
+          <div class="view-intro">
+            <span class="eyebrow">8 WEEKS · ONE OPERATING SYSTEM</span>
+            <h2>从“准备好再说”到“边判断边表达”</h2>
+            <p>八周不是八套课程，而是一条逐渐加压的会议能力路线。</p>
+          </div>
+          <div id="roadmap-list" class="roadmap-list"></div>
+        </section>
+
+        <section id="view-progress" class="view" data-view-panel="progress">
+          <div class="view-intro progress-intro">
+            <div>
+              <span class="eyebrow">MEASURE THE CHANGE</span>
+              <h2>你的会议能力，不是英语考试分数</h2>
+            </div>
+            <button id="export-progress" class="quiet-button dark" type="button">导出训练记录</button>
+          </div>
+          <div class="metric-strip">
+            <div><span>COMPLETED</span><strong id="metric-completed">0</strong><small>/ 62 sessions</small></div>
+            <div><span>LISTENING AVG</span><strong id="metric-listening">—</strong><small>/ 10</small></div>
+            <div><span>SPEAKING AVG</span><strong id="metric-speaking">—</strong><small>/ 10</small></div>
+            <div><span>START LATENCY</span><strong id="metric-latency">—</strong><small>seconds</small></div>
+          </div>
+          <div class="progress-grid">
+            <section class="chart-card">
+              <div class="card-heading"><div><span>TRAJECTORY</span><h3>听力 / 表达趋势</h3></div><div class="legend"><span class="listen"></span>听力 <span class="speak"></span>表达</div></div>
+              <div id="progress-chart" class="progress-chart"></div>
+            </section>
+            <section class="moves-card">
+              <div class="card-heading"><div><span>MEETING MOVES</span><h3>八种动作</h3></div></div>
+              <div id="moves-matrix" class="moves-matrix"></div>
+            </section>
+          </div>
+          <section class="history-card">
+            <div class="card-heading"><div><span>SESSION LOG</span><h3>最近训练</h3></div></div>
+            <div id="history-list" class="history-list"></div>
+          </section>
+        </section>
+
+        <section id="view-library" class="view" data-view-panel="library">
+          <div class="view-intro">
+            <span class="eyebrow">YOUR MATERIALS · YOUR MEETINGS</span>
+            <h2>把真实会议变成可重复训练</h2>
+            <p>优先使用你真正会参加的医学会和BD会。内容在浏览器内处理，不主动上传。</p>
+          </div>
+          <div class="library-grid">
+            <section class="import-card acid-card">
+              <span class="card-index">A</span>
+              <h3>导入 Codex 每日任务</h3>
+              <p>选择 automation 生成的 JSON，今日训练界面会自动替换为新材料。</p>
+              <div class="library-actions">
+                <button id="library-import-json" class="black-button" type="button">选择 JSON 文件</button>
+                <button id="library-restore-daily-session-button" class="restore-daily-button" type="button">恢复自动任务</button>
+              </div>
+              <small class="library-action-note">只清除本地导入；不会删除进度、草稿或录音。</small>
+            </section>
+            <section class="import-card coral-card">
+              <span class="card-index">B</span>
+              <h3>使用自己的会议录音</h3>
+              <p>音频或视频只在本次浏览器会话中打开。避免使用包含患者身份信息的材料。</p>
+              <button id="local-media-button" class="black-button" type="button">选择本地音视频</button>
+              <input id="local-media-input" type="file" accept="audio/*,video/*" hidden />
+            </section>
+            <section class="import-card ink-card">
+              <span class="card-index">C</span>
+              <h3>快速建立训练任务</h3>
+              <p>粘贴公开视频链接和时间段，沿用今天的训练结构立即开始。</p>
+              <form id="quick-session-form" class="quick-form">
+                <input id="quick-title" placeholder="材料标题" required />
+                <input id="quick-url" type="url" placeholder="YouTube 或公开视频链接" required />
+                <div><input id="quick-start" type="number" min="0" placeholder="开始秒数" required /><input id="quick-end" type="number" min="1" placeholder="结束秒数" required /></div>
+                <button type="submit">建立今日任务 →</button>
+              </form>
+            </section>
+          </div>
+          <section class="privacy-note">
+            <div class="privacy-mark">LOCAL</div>
+            <div><h3>隐私边界</h3><p>进度数据保存在浏览器 localStorage；录音保存在浏览器 IndexedDB。清除网站数据会删除这些内容。公开材料链接会连接外部网站。</p></div>
+          </section>
+        </section>
+      </main>
+
+      <nav class="mobile-nav" aria-label="移动端导航">
+        <button class="is-active" data-view="today"><span>01</span>今日</button>
+        <button data-view="roadmap"><span>02</span>路线</button>
+        <button data-view="progress"><span>03</span>进展</button>
+        <button data-view="library"><span>04</span>素材</button>
+      </nav>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <noscript>请启用 JavaScript 以使用训练计时、录音和进度功能。</noscript>
+    <script src="app.js" defer></script>
+  </body>
+</html>
