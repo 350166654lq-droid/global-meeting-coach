@@ -44,7 +44,7 @@ if [ "${1:-}" = "--validate-only" ]; then
   exit 0
 fi
 
-UNRELATED_STAGED="$(git diff --cached --name-only | awk -v archive="$SESSION_ARCHIVE" -v index="$INDEX_FILE" '$0 != "data/daily-session.json" && $0 != archive && $0 != index')"
+UNRELATED_STAGED="$(git diff --cached --name-only | awk -v archive="$SESSION_ARCHIVE" -v session_index="$INDEX_FILE" '$0 != "data/daily-session.json" && $0 != archive && $0 != session_index')"
 if [ -n "$UNRELATED_STAGED" ]; then
   echo "Publish stopped: unrelated staged files exist:"
   echo "$UNRELATED_STAGED"
