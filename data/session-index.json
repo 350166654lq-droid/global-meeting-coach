@@ -1,8 +1,8 @@
 {
   "latest": {
-    "day": 2,
-    "date": "2026-07-20",
-    "path": "data/sessions/day-02.json"
+    "day": 1,
+    "date": "2026-07-19",
+    "path": "data/sessions/day-01.json"
   },
   "sessions": [
     {
