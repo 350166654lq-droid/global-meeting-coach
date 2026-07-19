@@ -15,7 +15,7 @@ GitHub Pages：<https://350166654lq-droid.github.io/global-meeting-coach/>
 
 在 iPhone Safari 打开后，点“分享”→“添加到主屏幕”。每日任务更新后，重新打开或刷新 App 即可读取最新内容。
 
-本机的发布监听器会监测 `data/daily-session.json`。文件通过结构校验且内容发生变化时，只提交这一个 JSON 并推送 `main`；GitHub Pages 随后自动发布。发布日志写入 `/tmp/global-meeting-coach-publish.log` 和 `/tmp/global-meeting-coach-publish-error.log`。
+每天 08:00 的 Codex 训练任务会先更新并校验 `data/daily-session.json`，再只提交这个 JSON 并推送 `main`；GitHub Pages 随后自动发布。`publish-daily.command` 是手动补发工具，重复运行不会产生空提交。
 
 ## 启动
 
