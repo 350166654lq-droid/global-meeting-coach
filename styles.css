@@ -343,6 +343,59 @@ textarea:focus-visible {
   gap: 18px;
 }
 
+.session-picker {
+  display: grid;
+  flex: 0 0 230px;
+  min-width: 230px;
+  gap: 5px;
+}
+
+.session-picker > label {
+  color: var(--muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.session-picker > label.is-review { color: #c45442; }
+
+.session-select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.session-select-wrap select {
+  width: 100%;
+  height: 38px;
+  padding: 0 38px 0 13px;
+  overflow: hidden;
+  color: var(--ink);
+  font: 700 10px/1.2 "IBM Plex Mono", monospace;
+  text-overflow: ellipsis;
+  background: rgba(255,255,255,.56);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.session-select-wrap select:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+
+.session-select-wrap > span {
+  position: absolute;
+  right: 14px;
+  color: var(--coral);
+  font-size: 17px;
+  line-height: 1;
+  pointer-events: none;
+  transform: translateY(-2px);
+}
+
 .quiet-button {
   padding: 10px 14px;
   color: var(--ink);
@@ -1177,6 +1230,7 @@ textarea:focus-visible {
   .signal-grid { grid-template-columns: repeat(3,1fr); }
   .library-grid { grid-template-columns: 1fr 1fr; }
   .ink-card { grid-column: 1 / -1; }
+  .topbar-actions > .quiet-button { display: none; }
 }
 
 @media (max-width: 920px) {
@@ -1189,6 +1243,7 @@ textarea:focus-visible {
   .mobile-brand strong { font-size: 11px; }
   .day-context { display: none; }
   .quiet-button { display: none; }
+  .session-picker { flex-basis: 190px; min-width: 190px; }
   .today-grid { grid-template-columns: 1fr; }
   .session-console { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; }
   .console-topline,
@@ -1221,7 +1276,10 @@ textarea:focus-visible {
 
 @media (max-width: 640px) {
   .workspace { padding-inline: 12px; }
-  .topbar-actions { gap: 7px; }
+  .topbar { display: grid; min-height: 134px; gap: 10px; padding-block: 13px; }
+  .topbar-actions { width: 100%; gap: 10px; justify-content: space-between; }
+  .session-picker { flex: 1 1 auto; min-width: 0; }
+  .session-select-wrap select { height: 40px; }
   .day-counter { min-width: auto; padding-left: 10px; }
   .day-counter strong { font-size: 34px; }
   .mission-card,

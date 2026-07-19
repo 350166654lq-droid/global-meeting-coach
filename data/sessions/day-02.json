@@ -1,0 +1,133 @@
+{
+  "date": "2026-07-20",
+  "day": 2,
+  "totalDays": 62,
+  "sessionMinutes": 60,
+  "phase": "PHASE 01 · BASELINE",
+  "mode": "MEDICAL · SAFETY",
+  "abilityTarget": "听清安全性讨论中的责任边界，以及“所有、仅限、除外”如何改变行动。",
+  "source": {
+    "title": "Panel Discussion",
+    "organization": "U.S. Food and Drug Administration",
+    "speaker": "Linda Forsyth, MD, and Debra Catterson, RPh (FDA panel)",
+    "url": "https://www.youtube.com/watch?v=J1o14z94G3M&t=270s",
+    "videoId": "J1o14z94G3M",
+    "start": 270,
+    "end": 390,
+    "window": "04:30–06:30",
+    "description": "FDA panel Q&A on SAE reporting across treatment arms, ownership, and the distinction between ANDA and bio-IND contexts."
+  },
+  "coldListenQuestions": [
+    {
+      "label": "TOPIC / DECISION",
+      "question": "提问者要确认哪一类受试者组的SAE是否必须报告，以及谁承担提交责任？",
+      "answer": "问题聚焦参比治疗组SAE是否也须报告、由谁提交，以及如何避免重复病例。"
+    },
+    {
+      "label": "SPEAKER POSITION",
+      "question": "说话人对参比组、试验组和安慰剂组SAE的立场是什么？",
+      "answer": "三类治疗组的SAE都应报告；参比组不构成例外。"
+    },
+    {
+      "label": "EVIDENCE / DATA",
+      "question": "后半段用哪种研究/申报属性来解释报告路径为何不同？",
+      "answer": "关键区分是IND-exempt的BE/BA研究与ANDA或bio-IND情境，而不是单纯看因果关系。"
+    },
+    {
+      "label": "RISK / UNCERTAINTY",
+      "question": "“requirements are the same”这一假设为何不成立？最容易误听的限定是什么？",
+      "answer": "ANDA与bio-IND要求并不相同；IND-exempt情境、国外研究和最终ANDA提交都会改变具体路径。"
+    },
+    {
+      "label": "ACTION / OWNER",
+      "question": "说话人把SAE报告的主责任放在哪里？现场与申办方之间需要建立什么？",
+      "answer": "申请人承担整体SAE报告责任；需与研究者和中心建立及时、可追溯的沟通流程。"
+    }
+  ],
+  "secondPassTargets": [
+    {
+      "tag": "NUMBER",
+      "prompt": "本段没有关键数字；你是否听到了更关键的范围词，而没有硬找数字？",
+      "hint": "all SAEs；reference, test, or placebo arm"
+    },
+    {
+      "tag": "NEGATION",
+      "prompt": "哪一句否定直接推翻了“ANDA与bio-IND相同”的默认假设？",
+      "hint": "the short answer is no, they're not the same"
+    },
+    {
+      "tag": "CONDITION",
+      "prompt": "哪些条件或例外会改变SAE/AＥ信息走向FDA还是ANDA的方式？",
+      "hint": "IND-exempt BE/BA studies；except for foreign studies；when the ANDA is submitted"
+    },
+    {
+      "tag": "CONTRAST",
+      "prompt": "说话人把哪两种报告义务作了区分？",
+      "hint": "all SAEs to FDA vs all AEs included in the eventual ANDA submission"
+    },
+    {
+      "tag": "SPEAKER CHANGE",
+      "prompt": "新问题转给谁？她开头用什么句子先给出结论？",
+      "hint": "So Deborah...；the short answer is no"
+    }
+  ],
+  "blindSpots": [
+    "参比组SAE不是因为与研究药无关就可从申办方安全性闭环中消失。",
+    "all、only、regardless和except是本段真正决定结论的词，不能被“SAE”这个熟词掩盖。",
+    "FDA panel的具体ANDA/IND-exempt语境不能机械外推到所有全球研究；训练重点是责任链与限定条件。"
+  ],
+  "microClip": {
+    "start": 290,
+    "end": 300,
+    "window": "04:50–05:00",
+    "duration": "10 SEC",
+    "transcript": "Yes, absolutely. Serious adverse events from the reference treatment arm must be submitted as well.",
+    "translation": "是，当然。参比治疗组的严重不良事件也必须提交。",
+    "pronunciation": [
+      {
+        "label": "LINK",
+        "text": "events_from the reference",
+        "note": "events与from连读；不要把from吞掉，否则会漏掉“来自哪一组”。"
+      },
+      {
+        "label": "STRESS",
+        "text": "reference TREATment ARM · MUST",
+        "note": "组别与must承载责任结论；重音比逐字清晰更重要。"
+      }
+    ]
+  },
+  "speaking": {
+    "prompt": "在一项全球罕见癫痫研究中，中心认为参比治疗组的住院SAE与研究药无关，因此只需留在病历，不必进入申办方安全性闭环。请在会议上回应。先按方案和适用法规限定结论，不要把本段FDA generic-drug语境当作全球研究的直接规则。",
+    "prepLabels": [
+      {
+        "key": "position",
+        "label": "POSITION",
+        "placeholder": "你的当前结论"
+      },
+      {
+        "key": "evidence",
+        "label": "EVIDENCE",
+        "placeholder": "方案、安全性计划或事实真正支持什么"
+      },
+      {
+        "key": "risk",
+        "label": "RISK / UNCERTAINTY",
+        "placeholder": "不能直接外推或最可能漏报的风险"
+      },
+      {
+        "key": "action",
+        "label": "ACTION / ASK",
+        "placeholder": "你建议的owner、时限或澄清问题"
+      }
+    ],
+    "followUps": [
+      "If the investigator considers the event unrelated, why should the sponsor still capture it?",
+      "Who owns the action if the site and a partner both report the same SAE?"
+    ],
+    "meetingMove": "澄清责任与时限",
+    "sentenceFrames": [
+      "Just to confirm, the sponsor owns ___, while the site is responsible for ___.",
+      "Before we close this, can we name the owner and the reporting timeline?"
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-const CACHE_NAME = "global-meeting-coach-v2";
+const CACHE_NAME = "global-meeting-coach-v3";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -7,7 +7,10 @@ const APP_SHELL = [
   "./manifest.webmanifest",
   "./icons/app-icon.svg",
   "./icons/app-icon-180.png",
-  "./data/daily-session.json"
+  "./data/daily-session.json",
+  "./data/session-index.json",
+  "./data/sessions/day-01.json",
+  "./data/sessions/day-02.json"
 ];
 
 self.addEventListener("install", (event) => {
@@ -26,8 +29,19 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const requestUrl = new URL(event.request.url);
-  if (requestUrl.pathname.endsWith("daily-session.json")) {
-    event.respondWith(fetch(event.request, { cache: "no-store" }).catch(() => caches.match(event.request)));
+  if (requestUrl.pathname.endsWith(".json")) {
+    const cacheKey = new Request(`${requestUrl.origin}${requestUrl.pathname}`);
+    event.respondWith(
+      fetch(event.request, { cache: "no-store" })
+        .then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(cacheKey, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(cacheKey))
+    );
     return;
   }
   event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request)));

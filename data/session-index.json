@@ -1,0 +1,23 @@
+{
+  "latest": {
+    "day": 2,
+    "date": "2026-07-20",
+    "path": "data/sessions/day-02.json"
+  },
+  "sessions": [
+    {
+      "day": 2,
+      "date": "2026-07-20",
+      "mode": "MEDICAL · SAFETY",
+      "title": "Panel Discussion",
+      "path": "data/sessions/day-02.json"
+    },
+    {
+      "day": 1,
+      "date": "2026-07-19",
+      "mode": "BD · REGULATORY",
+      "title": "Panel Discussion",
+      "path": "data/sessions/day-01.json"
+    }
+  ]
+}
