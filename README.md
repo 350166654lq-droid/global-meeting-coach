@@ -15,6 +15,8 @@ GitHub Pages：<https://350166654lq-droid.github.io/global-meeting-coach/>
 
 在 iPhone Safari 打开后，点“分享”→“添加到主屏幕”。每日任务更新后，重新打开或刷新 App 即可读取最新内容。
 
+本机的发布监听器会监测 `data/daily-session.json`。文件通过结构校验且内容发生变化时，只提交这一个 JSON 并推送 `main`；GitHub Pages 随后自动发布。发布日志写入 `/tmp/global-meeting-coach-publish.log` 和 `/tmp/global-meeting-coach-publish-error.log`。
+
 ## 启动
 
 直接双击桌面上的 `Global Meeting Coach.app`。也可以双击本目录内的 `launch.command`。浏览器会打开 `http://127.0.0.1:4173`。
