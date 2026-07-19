@@ -75,6 +75,13 @@
             <h1 id="page-title">今日训练</h1>
           </div>
           <div class="topbar-actions">
+            <div class="session-picker">
+              <label id="session-selection-state" for="session-selector">当前训练</label>
+              <div class="session-select-wrap">
+                <select id="session-selector" aria-label="选择训练日"></select>
+                <span aria-hidden="true">⌄</span>
+              </div>
+            </div>
             <button id="import-session-button" class="quiet-button" type="button">
               导入今日任务
             </button>

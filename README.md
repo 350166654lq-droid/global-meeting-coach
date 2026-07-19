@@ -15,7 +15,7 @@ GitHub Pages：<https://350166654lq-droid.github.io/global-meeting-coach/>
 
 在 iPhone Safari 打开后，点“分享”→“添加到主屏幕”。每日任务更新后，重新打开或刷新 App 即可读取最新内容。
 
-每天 08:00 的 Codex 训练任务会先更新并校验 `data/daily-session.json`，再只提交这个 JSON 并推送 `main`；GitHub Pages 随后自动发布。`publish-daily.command` 是手动补发工具，重复运行不会产生空提交。
+每天 08:00 的 Codex 训练任务会更新并校验今日 JSON、当天归档和历史索引，再只提交这三个数据文件并推送 `main`；GitHub Pages 随后自动发布。`publish-daily.command` 是手动补发工具，重复运行不会产生空提交。
 
 ## 启动
 
@@ -26,6 +26,8 @@ GitHub Pages：<https://350166654lq-droid.github.io/global-meeting-coach/>
 ## 每日内容
 
 默认从 `data/daily-session.json` 读取当天训练。也可以在应用内导入 JSON 或临时打开自己的音视频。
+
+顶部“训练日”菜单默认打开最新任务，也可以切换到已归档的 Day 复习。每日任务同时保存在 `data/sessions/day-NN.json`，目录由 `data/session-index.json` 管理；不同 Day 的草稿、评分和录音仍按训练日期分别保存。
 
 若曾导入任务而希望恢复自动每日任务，点击页面顶部的“恢复自动任务”。该操作只清除导入任务，不会删除训练进度、文字记录或录音。
 

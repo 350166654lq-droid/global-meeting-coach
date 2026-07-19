@@ -87,6 +87,9 @@ const MEETING_MOVES = [
 
 const state = {
   session: null,
+  sessionEntries: [],
+  activeSessionKey: null,
+  latestSessionKey: null,
   localMedia: null,
   clock: {
     total: 3600,
@@ -122,6 +125,7 @@ async function init() {
   renderRoadmap();
 
   state.session = await loadSession();
+  await loadSessionIndex(state.session);
   state.clock.total = (state.session.sessionMinutes || 60) * 60;
   state.clock.remaining = state.clock.total;
   renderSession();
@@ -129,6 +133,7 @@ async function init() {
   await loadSessionRecordings();
   renderProgress();
   restoreDraft();
+  restoreScorecard();
 
   if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
     navigator.serviceWorker.register("./service-worker.js").catch(() => {});
@@ -155,6 +160,46 @@ async function loadSession() {
   }
   if (fetched && isValidSession(fetched)) return fetched;
   throw new Error("No valid training session found.");
+}
+
+async function loadSessionIndex(activeSession) {
+  let entries = [];
+  let latest = null;
+  try {
+    const response = await fetch(`data/session-index.json?ts=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error("Session index unavailable");
+    const index = await response.json();
+    entries = Array.isArray(index.sessions)
+      ? index.sessions.filter((item) => item && Number.isInteger(item.day) && item.date && item.path)
+      : [];
+    latest = index.latest || null;
+  } catch (error) {
+    entries = [];
+  }
+
+  const activeKey = sessionKey(activeSession);
+  if (!entries.some((item) => sessionEntryKey(item) === activeKey)) {
+    entries.unshift({
+      day: activeSession.day,
+      date: activeSession.date,
+      mode: activeSession.mode,
+      title: activeSession.source?.title,
+      path: null
+    });
+  }
+
+  entries.sort((a, b) => Number(b.day) - Number(a.day));
+  state.sessionEntries = entries;
+  state.activeSessionKey = activeKey;
+  state.latestSessionKey = latest ? sessionEntryKey(latest) : sessionEntryKey(entries[0]);
+}
+
+function sessionKey(session) {
+  return `${session?.date || "unknown"}::${Number(session?.day || 0)}`;
+}
+
+function sessionEntryKey(entry) {
+  return `${entry?.date || "unknown"}::${Number(entry?.day || 0)}`;
 }
 
 function isValidSession(session) {
@@ -195,6 +240,25 @@ function renderSession() {
   renderSentenceFrames();
   renderWeekDots();
   setCurrentRoadmapRow();
+  renderSessionPicker();
+}
+
+function renderSessionPicker() {
+  const select = $("#session-selector");
+  if (!select) return;
+  select.innerHTML = "";
+  state.sessionEntries.forEach((entry) => {
+    const option = document.createElement("option");
+    const key = sessionEntryKey(entry);
+    const prefix = key === state.latestSessionKey ? "当前" : "复习";
+    option.value = key;
+    option.textContent = `${prefix} · Day ${String(entry.day).padStart(2, "0")} · ${entry.mode || "SESSION"}`;
+    select.append(option);
+  });
+  select.value = state.activeSessionKey;
+  const isLatest = state.activeSessionKey === state.latestSessionKey;
+  $("#session-selection-state").textContent = isLatest ? "当前训练" : "历史复习";
+  $("#session-selection-state").classList.toggle("is-review", !isLatest);
 }
 
 function renderMedia(container, start, end, compact = false) {
@@ -410,7 +474,10 @@ function bindNavigation() {
 function switchView(view) {
   $$('[data-view-panel]').forEach((panel) => panel.classList.toggle("is-visible", panel.dataset.viewPanel === view));
   $$('.nav-item[data-view], .mobile-nav [data-view]').forEach((item) => item.classList.toggle("is-active", item.dataset.view === view));
-  const titles = { today: "今日训练", roadmap: "八周路线", progress: "能力进展", library: "训练素材" };
+  const todayTitle = state.activeSessionKey === state.latestSessionKey
+    ? "今日训练"
+    : `复习 Day ${String(state.session?.day || 1).padStart(2, "0")}`;
+  const titles = { today: todayTitle, roadmap: "八周路线", progress: "能力进展", library: "训练素材" };
   $("#page-title").textContent = titles[view] || "Meeting Coach";
   if (view === "progress") renderProgress();
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -423,6 +490,7 @@ function bindGlobalActions() {
   $("#library-import-json").onclick = () => input.click();
   $("#library-restore-daily-session-button").onclick = restoreDailySession;
   input.addEventListener("change", handleSessionImport);
+  $("#session-selector").addEventListener("change", handleSessionSelection);
 
   $$(".phase-row").forEach((row) => {
     row.onclick = () => {
@@ -430,6 +498,83 @@ function bindGlobalActions() {
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     };
   });
+}
+
+async function handleSessionSelection(event) {
+  const requestedKey = event.target.value;
+  if (requestedKey === state.activeSessionKey) return;
+  if (state.recorder.mediaRecorder?.state === "recording") {
+    event.target.value = state.activeSessionKey;
+    showToast("请先结束当前录音，再切换训练日。", true);
+    return;
+  }
+
+  const entry = state.sessionEntries.find((item) => sessionEntryKey(item) === requestedKey);
+  if (!entry?.path) {
+    event.target.value = state.activeSessionKey;
+    showToast("该训练日只有本地导入内容，无法重新读取。", true);
+    return;
+  }
+
+  saveDraft();
+  try {
+    const response = await fetch(`${entry.path}?ts=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error("Archived session unavailable");
+    const archived = await response.json();
+    if (!isValidSession(archived) || sessionKey(archived) !== requestedKey) {
+      throw new Error("Archived session mismatch");
+    }
+    await activateSession(archived);
+    const prefix = requestedKey === state.latestSessionKey ? "已回到" : "已打开";
+    showToast(`${prefix} Day ${String(archived.day).padStart(2, "0")}。`, true);
+  } catch (error) {
+    event.target.value = state.activeSessionKey;
+    showToast("该训练日暂时无法读取，请刷新后重试。", true);
+  }
+}
+
+async function activateSession(session) {
+  if (state.clock.timer) clearInterval(state.clock.timer);
+  state.clock.timer = null;
+  state.clock.running = false;
+  state.session = session;
+  state.activeSessionKey = sessionKey(session);
+  if (state.localMedia?.url) URL.revokeObjectURL(state.localMedia.url);
+  state.localMedia = null;
+  state.clock.total = (session.sessionMinutes || 60) * 60;
+  state.clock.remaining = state.clock.total;
+  $("#clock-toggle").textContent = "开始训练";
+  $("#clock-state").textContent = "READY";
+  renderSession();
+  updateClockDisplay();
+  resetSessionControls();
+  await loadSessionRecordings();
+  restoreDraft();
+  restoreScorecard();
+  switchView("today");
+}
+
+function resetSessionControls() {
+  $("#score-form").reset();
+  $("#listening-score-value").textContent = $("#listening-score").value;
+  $("#speaking-score-value").textContent = $("#speaking-score").value;
+  $$(".loop-dot").forEach((dot) => dot.classList.remove("is-done"));
+}
+
+function restoreScorecard() {
+  if (!state.session) return;
+  const entry = getProgress().find(
+    (item) => item.sessionDate === state.session.date && Number(item.day) === Number(state.session.day)
+  );
+  if (!entry) return;
+  $("#listening-score").value = entry.listening;
+  $("#speaking-score").value = entry.speaking;
+  $("#listening-score-value").textContent = entry.listening;
+  $("#speaking-score-value").textContent = entry.speaking;
+  $("#start-latency").value = entry.latency ?? "";
+  $("#longest-pause").value = entry.longestPause ?? "";
+  $("#script-dependent").checked = Boolean(entry.scriptDependent);
+  $("#daily-reflection").value = entry.reflection || "";
 }
 
 async function handleSessionImport(event) {
@@ -440,13 +585,17 @@ async function handleSessionImport(event) {
     if (!isValidSession(imported)) throw new Error("Invalid session schema");
     localStorage.setItem(STORAGE.override, JSON.stringify(imported));
     state.session = imported;
+    await loadSessionIndex(imported);
+    state.activeSessionKey = sessionKey(imported);
     state.localMedia = null;
     state.clock.total = (imported.sessionMinutes || 60) * 60;
     state.clock.remaining = state.clock.total;
     renderSession();
+    resetSessionControls();
     updateClockDisplay();
     await loadSessionRecordings();
     restoreDraft();
+    restoreScorecard();
     switchView("today");
     showToast("今日训练任务已导入。", true);
   } catch (error) {
@@ -459,15 +608,9 @@ async function handleSessionImport(event) {
 async function restoreDailySession() {
   try {
     localStorage.removeItem(STORAGE.override);
-    state.session = await loadSession();
-    state.localMedia = null;
-    state.clock.total = (state.session.sessionMinutes || 60) * 60;
-    state.clock.remaining = state.clock.total;
-    renderSession();
-    updateClockDisplay();
-    await loadSessionRecordings();
-    restoreDraft();
-    switchView("today");
+    const latest = await loadSession();
+    await loadSessionIndex(latest);
+    await activateSession(latest);
     showToast("已恢复自动每日任务；训练进度、草稿和录音均未删除。", true);
   } catch (error) {
     showToast("自动每日任务暂时不可用；请稍后重试。", true);
