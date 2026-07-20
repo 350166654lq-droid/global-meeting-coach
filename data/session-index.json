@@ -1,20 +1,27 @@
 {
   "latest": {
-    "day": 2,
+    "day": 3,
     "date": "2026-07-20",
-    "path": "data/sessions/day-02.json"
+    "path": "data/sessions/day-03.json"
   },
   "sessions": [
     {
-      "day": 2,
+      "day": 3,
       "date": "2026-07-20",
+      "mode": "BD · DEVELOPMENT RISK",
+      "title": "Fail Fast, Learn Faster: Drug Development in Rare Disease",
+      "path": "data/sessions/day-03.json"
+    },
+    {
+      "day": 2,
+      "date": "2026-07-19",
       "mode": "MEDICAL · SAFETY",
       "title": "Panel Discussion",
       "path": "data/sessions/day-02.json"
     },
     {
       "day": 1,
-      "date": "2026-07-19",
+      "date": "2026-07-18",
       "mode": "BD · REGULATORY",
       "title": "Panel Discussion",
       "path": "data/sessions/day-01.json"
