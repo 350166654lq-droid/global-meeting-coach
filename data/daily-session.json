@@ -1,69 +1,69 @@
 {
-  "date": "2026-07-21",
+  "date": "2026-07-22",
   "day": 4,
   "totalDays": 62,
   "sessionMinutes": 60,
   "phase": "PHASE 01 · BASELINE",
-  "mode": "MEDICAL · PROTOCOL & OPERATIONS",
-  "abilityTarget": "在多人讨论中抓住“方案复杂度—可及性—责任方”的完整论证链，并用一句话复述可执行的下一步。",
+  "mode": "MEDICAL · TRIAL DESIGN",
+  "abilityTarget": "在现场 Q&A 中抓住“早期收窄人群—降低变异—后期外推”的条件链，并明确说话人没有指定的 owner。",
   "source": {
-    "title": "Conversations on Cancer: Clinical Trial Site Selection: Fact vs Fiction",
-    "organization": "U.S. Food and Drug Administration · Oncology Center of Excellence",
-    "speaker": "Meg Valnosky (Theradex Oncology), followed by Dr. Carrie Lee (UNC Lineberger); FDA public panel",
-    "url": "https://www.youtube.com/watch?v=Bp-11mhzoqw&t=2038s",
-    "videoId": "Bp-11mhzoqw",
-    "start": 2038,
-    "end": 2168,
-    "window": "33:58–36:08",
-    "description": "FDA public panel. Two speakers connect inclusive site selection with protocol inclusion/exclusion criteria, patient-support logistics, site burden, and multi-stakeholder ownership. 60-minute plan: 8 min first listen, 8 min second listen, 10 min transcript check and shadowing, 25 min spoken simulation, 9 min score and review."
+    "title": "FDA Clinical Investigator Training Course (CITC) 2024 – Day One – Session One",
+    "organization": "U.S. Food and Drug Administration · CDER Small Business and Industry Assistance",
+    "speaker": "Kimberly Smith, MD, MS (FDA CDER moderator) and James P. Smith, MD, MS (Director, Office of New Drug Policy, FDA CDER)",
+    "url": "https://www.youtube.com/watch?v=O3zUnq8GHa0&t=6892s",
+    "videoId": "O3zUnq8GHa0",
+    "start": 6892,
+    "end": 7040,
+    "window": "1:54:52–1:57:20",
+    "description": "FDA public Clinical Investigator Training Course Q&A. The moderator asks when a study population should be narrow or broad; the FDA speaker ties early signal detection to variability, then states the generalizability risk of remaining narrow. 60-minute plan: 8 min first listen, 8 min second listen, 10 min transcript check and shadowing, 25 min spoken simulation, 9 min score and review."
   },
   "coldListenQuestions": [
-    {"label": "TOPIC / DECISION", "question": "这段把哪个中心选择问题，进一步落到了哪个方案层面的决定？", "answer": "讨论从包容性研究与中心选择，落到研究设计及入排标准是否制造可及性障碍。"},
-    {"label": "SPEAKER POSITION", "question": "Meg 的核心立场是什么：只靠增加中心，还是需要改变开发团队的工作方式？", "answer": "她主张开发方也要审视自身设计、投入资源并与多方协作；不是单靠扩增中心。"},
-    {"label": "EVIDENCE / DATA", "question": "说话人给出的具体组织层面例子和数量是什么？", "answer": "她提到 inclusive research site alliance，与四家机构合作建设临床试验能力。"},
-    {"label": "RISK / UNCERTAINTY", "question": "片段中指出哪两类设计或运营因素可能限制患者进入研究？", "answer": "入排标准本身，以及远离中心时的交通和患者导航支持不足。"},
-    {"label": "ACTION / OWNER", "question": "谁应承担下一步？第二位说话人补充了哪些合作切入点？", "answer": "没有单一 owner：开发方、中心和支持方共同承担；可从人员、培训、患者教育和降低现场负担切入。"}
+    {"label": "TOPIC / DECISION", "question": "主持人要求比较的两个研究人群定义选择是什么？她特别排除了哪个相邻概念？", "answer": "比较人群应较窄还是较广；问题明确不是在问 enrichment 本身。"},
+    {"label": "SPEAKER POSITION", "question": "James 对早期开发中收窄人群的立场是什么？这是否等于整个项目都应保持狭窄？", "answer": "早期可为识别信号而收窄、提高同质性；并非全程如此，后续应拓宽。"},
+    {"label": "EVIDENCE / DATA", "question": "他用什么“信号与噪音”的逻辑支持这一取舍？", "answer": "小效应更常见，需区分信号和噪音；降低变异有助于早期识别信号。"},
+    {"label": "RISK / UNCERTAINTY", "question": "若开发中始终只研究狭窄人群，后续可能出现什么问题？", "answer": "拓宽后疗效可能不如预期，且证据难以外推到实际会用药的人群。"},
+    {"label": "ACTION / OWNER", "question": "片段是否指定了具体 owner 或下一步？应如何把它转成项目行动？", "answer": "没有指定 owner 或时限；项目团队需把目标人群、变异控制和后续外推计划写入开发决策。"}
   ],
   "secondPassTargets": [
-    {"tag": "NUMBER", "prompt": "抓住联盟涉及的机构数；不要把它误听成试验中心或患者数。", "hint": "four institutions"},
-    {"tag": "NEGATION", "prompt": "找出患者并非通常能获得什么，以及开发方承认自己还缺少什么。", "hint": "don't typically have access to clinical trials; we actually need some help too"},
-    {"tag": "CONDITION", "prompt": "什么前提使“投资”成为必要行动，而不是泛泛倡议？", "hint": "if we want to solve this together"},
-    {"tag": "CONTRAST", "prompt": "第二位说话人对比了哪两种就诊/执行方式？", "hint": "coming into main campus versus local labs and PCP engagement used during COVID"},
-    {"tag": "SPEAKER CHANGE", "prompt": "何时从 Meg 的开发方自省，切换到中心方的回应？第二位说话人的首要反馈是什么？", "hint": "around 35:51; the site perspective says it can feel as if sites are working alone"}
+    {"tag": "NUMBER", "prompt": "抓住唯一的量化表达；不要凭空听成具体样本量。", "hint": "a fairly small number of patients — no discrete sample size is stated"},
+    {"tag": "NEGATION", "prompt": "找出他对拓宽人群后的否定性表述，以及它否定的是什么。", "hint": "it does not work as well as you hoped after the population is broadened"},
+    {"tag": "CONDITION", "prompt": "什么情况下，降低变异特别重要？", "hint": "when the effect may be smaller and the team needs to distinguish it from noise"},
+    {"tag": "CONTRAST", "prompt": "抓两组对照：大效应与小效应；狭窄人群与更广人群。", "hint": "very large effect versus smaller effect; narrow definition early versus broader population later"},
+    {"tag": "SPEAKER CHANGE", "prompt": "谁提出问题，谁给出回答？在何处进入回答主体？", "hint": "Kimberly Smith addresses Jim; James P. Smith begins answering at about 1:55:06"}
   ],
   "blindSpots": [
-    "“four institutions”描述的是能力建设联盟，不是研究样本量、中心数或疗效证据。",
-    "说话人没有主张为了入组而无条件放宽入排；她要求先审视哪些标准或执行要求造成障碍。",
-    "“multi-stakeholders”不是没有 owner：它要求把方案、中心培训、患者支持和执行路径分别明确归属。"
+    "“a fairly small number”不是具体样本量；片段未给 n，不能自行补数值。",
+    "说话人不是主张永久富集；早期降变异的价值与后期证据可推广性必须同时成立。",
+    "FDA 讲者未分派 owner、日期或方案修改；把这类原则直接写成具体监管要求是过度推断。"
   ],
   "microClip": {
-    "start": 2104,
-    "end": 2114,
-    "window": "35:04–35:14",
-    "duration": "10 SEC",
-    "transcript": "There are ways that we can scrutinize our own study designs, our inclusion exclusion criteria. There are things that we can do to better help.",
-    "translation": "我们可以审视自己的研究设计和入排标准；也有一些事可以做得更好来支持患者。",
+    "start": 7012,
+    "end": 7027,
+    "window": "1:56:52–1:57:07",
+    "duration": "15 SEC",
+    "transcript": "One approach to reducing variability is to more narrowly define a patient population, such that there is more homogeneity.",
+    "translation": "降低变异的一种方法，是更严格地界定患者人群，从而提高人群同质性。",
     "pronunciation": [
-      {"label": "LINK", "text": "ways_that we can · designs_our", "note": "ways 与 that 连读；designs 尾音 /z/ 直接连到 our，不要额外停顿。"},
-      {"label": "STRESS", "text": "scruTI-nize · STUDY deSIGNS · inCLU-sion exCLU-sion", "note": "重音放在审查对象；inclusion 与 exclusion 成对、节奏清楚。"}
+      {"label": "LINK", "text": "approach_to · patient_population · such_that", "note": "三个词组之间不断开；patient 的 /t/ 轻接 population。"},
+      {"label": "STRESS", "text": "reDUcing variA-bility · NARrowly deFINE · homo-geNEity", "note": "重音落在论证动作和结果词；narrowly 不要吞掉第二音节。"}
     ]
   },
   "speaking": {
-    "prompt": "情境：一项中国 DEE 研究的中心反馈，连续 28 天基线日记、频繁返院及部分实验室要求可能使远距离家庭难以筛选。团队有人提议立刻放宽入排。你在 global medical meeting 中发言：先用 Position → Evidence → Risk/Uncertainty → Action/Ask 四个 bullet 准备，不写完整稿；录三遍 90 秒 → 60 秒 → 45 秒。随后用 9 分钟模拟：每次只看四个 bullet，回答下列两题并给 PM/Clinical Ops/Medical 各一个具体 owner，确保当天累计开口至少 15 分钟。",
+    "prompt": "情境：一项 DEE 项目早期队列在高度限定的 LGS 亚群中出现疗效信号。团队拟把下一阶段仍限定在该亚群，以获得更干净的数据。你在 global medical meeting 中发言：先仅用 Position → Evidence → Risk/Uncertainty → Action/Ask 四个 bullet 准备，不写完整稿；录三遍 90 秒 → 60 秒 → 45 秒。随后进行 22 分钟口头模拟：每个 follow-up 连续回答 3 次（每次约 2 分钟），最后用 4 分钟作 meeting summary，明确 Clinical、Biostats 和 Medical 的 owner。当天累计开口至少 19 分钟。",
     "prepLabels": [
-      {"key": "position", "label": "POSITION", "placeholder": "你支持、反对或限定支持什么"},
-      {"key": "evidence", "label": "EVIDENCE", "placeholder": "目前中心反馈、方案要求和数据真正支持什么"},
-      {"key": "risk", "label": "RISK / UNCERTAINTY", "placeholder": "不能直接改入排的科学、可比性或合规风险"},
-      {"key": "action", "label": "ACTION / ASK", "placeholder": "你建议哪个 owner 在何时核对什么证据"}
+      {"key": "position", "label": "POSITION", "placeholder": "你支持、反对或限定支持继续限制人群的哪一点"},
+      {"key": "evidence", "label": "EVIDENCE", "placeholder": "现有信号、变异来源和目标产品人群真正支持什么"},
+      {"key": "risk", "label": "RISK / UNCERTAINTY", "placeholder": "选择偏倚、外推性和安全性解释还缺什么"},
+      {"key": "action", "label": "ACTION / ASK", "placeholder": "需要哪个 owner 在何时给出什么分析或方案建议"}
     ],
     "followUps": [
-      "What evidence would distinguish an avoidable operational barrier from a criterion that protects data interpretability?",
-      "If the protocol cannot change before first-patient-in, what support can we implement without changing eligibility?"
+      "What would make you broaden the population before seeing a second efficacy signal?",
+      "How would you explain the trade-off between a cleaner signal and generalizability to the clinical lead?"
     ],
-    "meetingMove": "复述并提出行动",
+    "meetingMove": "澄清决策边界",
     "sentenceFrames": [
-      "Let me reflect the decision point: we should separate ___ from ___ before changing eligibility.",
-      "My proposed next step is for ___ to confirm ___ by ___; Medical can then assess whether a protocol change is justified."
+      "Before we decide, could I clarify whether the objective is to detect a signal or to support generalizability for the next stage?",
+      "I hear two separate decisions: defining the early cohort and planning when to broaden it; can we assign an owner to each?"
     ]
   }
 }
