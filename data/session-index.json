@@ -1,15 +1,15 @@
 {
   "latest": {
     "day": 3,
-    "date": "2026-07-20",
+    "date": "2026-07-21",
     "path": "data/sessions/day-03.json"
   },
   "sessions": [
     {
       "day": 3,
-      "date": "2026-07-20",
-      "mode": "BD · DEVELOPMENT RISK",
-      "title": "Fail Fast, Learn Faster: Drug Development in Rare Disease",
+      "date": "2026-07-21",
+      "mode": "MEDICAL · PROTOCOL & OPERATIONS",
+      "title": "Conversations on Cancer: Clinical Trial Site Selection: Fact vs Fiction",
       "path": "data/sessions/day-03.json"
     },
     {
