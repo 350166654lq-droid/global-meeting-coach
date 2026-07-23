@@ -1,133 +1,133 @@
 {
-  "date": "2026-07-22",
+  "date": "2026-07-23",
   "day": 5,
   "totalDays": 62,
   "sessionMinutes": 60,
   "phase": "PHASE 01 · BASELINE",
-  "mode": "BD · TRANSLATIONAL VALIDITY",
-  "abilityTarget": "在多人讨论中判断“多维 biomarker 数据”是验证证据、可检验假设还是尚未闭合的叙事，并说清下一步证据要求。",
+  "mode": "BD · DATA ASSET RISK",
+  "abilityTarget": "在多人讨论中区分数据资产的科学价值、可访问性限制和可执行的下一步，而不把工具产出误说成原始数据已公开。",
   "source": {
-    "title": "Panel Discussion: Clinical Validation & Biomarkers in Autism Research @Synchrony2020",
-    "organization": "The BRAIN Foundation · Synchrony 2020 Online Symposium",
-    "speaker": "John Slattery (CEO, BioROSA Technologies), followed by Chris Chatham, PhD (Roche Innovation Center); moderated expert panel",
-    "url": "https://www.youtube.com/watch?v=7zUK0w-oRiM&t=2414s",
-    "videoId": "7zUK0w-oRiM",
-    "start": 2414,
-    "end": 2564,
-    "window": "40:14–42:44",
-    "description": "Public translational-biomarker panel. John Slattery proposes applying multiple analytic approaches to the same participants; Chris Chatham follows with the need for multidisciplinary consensus and identifies uncertainty about missed opportunities. 60-minute plan: 8 min first listen, 8 min second listen, 10 min transcript check and shadowing, 25 min spoken simulation, 9 min score and review."
+    "title": "2022 RDCA-DAP Workshop: Case Studies Panel Discussion and Q&A",
+    "organization": "Critical Path Institute",
+    "speaker": "Ron Bartek (FARA) and Amanda Klein (Critical Path Institute), in a panel moderated by Alexandre Betourne (Critical Path Institute)",
+    "url": "https://www.youtube.com/watch?v=evzbpqfkdkY&t=2961s",
+    "videoId": "evzbpqfkdkY",
+    "start": 2961,
+    "end": 3052,
+    "window": "49:21–50:52",
+    "description": "Public rare-disease development panel Q&A. The 91-second exchange addresses retrospective re-consent, consent-driven data-access limits, and how a trial-simulation tool can still be broadly usable when much of the source data is not. 60-minute plan: 8 min first listen, 8 min second listen, 10 min transcript check and shadowing, 25 min spoken simulation, 9 min score and review."
   },
   "coldListenQuestions": [
     {
       "label": "TOPIC / DECISION",
-      "question": "这一段要解决的核心问题是什么：单个 biomarker 的表现，还是如何把跨学科数据变成可验证的开发证据？",
-      "answer": "核心是如何协作、在同一批受试者上整合多维数据并推进 biomarker 验证；并非汇报某个 biomarker 已成功。"
+      "question": "这段讨论要解决的核心不是数据分析本身，而是哪一个“数据能否复用”的决策问题？",
+      "answer": "核心是历史自然史/试验数据在再同意和共享限制下能否被复用，以及能否把受限数据转化为可广泛使用的工具。"
     },
     {
       "label": "SPEAKER POSITION",
-      "question": "John 提议的工作方式是什么？Chris 补充了哪类共识？",
-      "answer": "John 主张同一批受试者接受多种分析以形成交叉证据；Chris 强调跨学科共识，不应只停留在临床实践视角。"
+      "question": "第一位回答者对 retrospective re-consent 的立场是什么？第二位回答者如何界定原始数据与工具的可访问性？",
+      "answer": "第一位认为可以完成再同意，但对已去世受试者更难；第二位强调大部分原始数据不向一般用户开放，但由 C-Path 生成的工具可开放。"
     },
     {
       "label": "EVIDENCE / DATA",
-      "question": "John 用了哪个具体数量和设计例子说明“多维”而非单点证据？",
-      "answer": "他提出在同一个孩子身上用七种不同方式观察/分析，作为建立交叉证据的例子。"
+      "question": "哪两项具体事实支撑“受限数据仍有开发价值”？",
+      "answer": "自然史研究曾为符合新的欧洲保密要求而整体再同意；Duchenne 数据库中受限数据被用于构建 clinical-trial simulation tool。"
     },
     {
       "label": "RISK / UNCERTAINTY",
-      "question": "Chris 明确表达的未知和潜在风险是什么？",
-      "answer": "他不确定免疫遗传学专家会如何评价现有基因集，并担心其中可能存在遗漏的机会。"
+      "question": "两位说话人分别点出了哪两类不能靠分析本身解决的风险？",
+      "answer": "一类是无法再联系或已去世受试者导致的再同意限制；另一类是 consent/shareability 限制，使原始数据不能对一般用户开放。"
     },
     {
       "label": "ACTION / OWNER",
-      "question": "片段中谁被明确分配为 owner？若转成 BD due diligence，下一步应落在哪里？",
-      "answer": "片段没有正式指定 owner 或期限；BD 团队应要求明确 context of use、预设分析和临床锚定验证计划。"
+      "question": "片段中正式 owner 或 deadline 是什么？若转成 BD diligence，下一步谁应交付什么？",
+      "answer": "片段没有正式分配 owner 或期限。BD 应要求数据平台/项目方明确：可访问数据集、再同意覆盖率、工具的输入数据谱系及适用边界。"
     }
   ],
   "secondPassTargets": [
     {
       "tag": "NUMBER",
-      "prompt": "抓住 John 的具体数量；它是分析维度数，不是样本量或疗效结果。",
-      "hint": "seven different ways applied to the same child"
+      "prompt": "本段没有样本量、效应量或成功率；第二遍确认这一点，不能把“whole study”或“most data”听成定量结果。",
+      "hint": "No explicit N, effect size, or percentage is stated in this 91-second window."
     },
     {
       "tag": "NEGATION",
-      "prompt": "Chris 用哪句否定限定了共识不能只覆盖什么？",
-      "hint": "not just clinical practice"
+      "prompt": "抓住两处否定：什么数据不能被一般用户访问？什么情况下不能完成再同意？",
+      "hint": "most data is not available for general users; you couldn't re-consent people who may have passed away"
     },
     {
       "tag": "CONDITION",
-      "prompt": "注意他用哪些不确定性词，而不要把探索性想法听成已验证结论。",
-      "hint": "maybe; I'm frankly not sure; whether there may be missed opportunities"
+      "prompt": "听清 shareability 为什么会受限；条件是数据质量还是 consent？",
+      "hint": "restrictions can depend on the consent aspect, even when the data can support a useful tool"
     },
     {
       "tag": "CONTRAST",
-      "prompt": "区分“单一学科/临床实践”与“多学科共识及跨维分析”的两层论点。",
-      "hint": "not just clinical practice versus multidisciplinary consensus across different backgrounds"
+      "prompt": "区分“原始数据库不可广泛访问”与“由其构建的模拟工具可向所有人开放”。",
+      "hint": "restricted source data versus an accessible clinical-trial simulation tool"
     },
     {
       "tag": "SPEAKER CHANGE",
-      "prompt": "谁先提出共享分析网络，谁在约 41:25 被点名补充？",
-      "hint": "John Slattery speaks first; the moderator invites Chris Chatham at about 41:25"
+      "prompt": "约 50:02 发生了什么话轮变化？第二位说话人是在反驳还是补充前一位？",
+      "hint": "A second panelist gives a brief follow-up that reinforces, rather than contradicts, the consent/access point."
     }
   ],
   "blindSpots": [
-    "“seven different ways”是讨论中的分析设想，不是已完成的 biomarker qualification 或临床验证结果。",
-    "多学科参与不自动产生可用 biomarker；仍需明确 context of use、预设分析、重复性和临床锚定。",
-    "片段表达的是探索性不确定性，未指定具体项目、owner、时限或 go/no-go 阈值。"
+    "“工具可公开”不等于支持工具的全部 patient-level 数据、元数据或分析代码可公开取得。",
+    "再同意可行不代表覆盖完整；失访、死亡和原始 consent 范围都会造成不可逆缺口。",
+    "临床试验模拟工具的价值仍取决于数据代表性、终点定义、模型假设和适用人群，不能仅因已开放就用于投资结论。"
   ],
   "microClip": {
-    "start": 2447,
-    "end": 2457,
-    "window": "40:47–40:57",
-    "duration": "10 SEC",
-    "transcript": "On the same kids, so that we have this sort of proof of: look, we can look at this same kid seven different ways.",
-    "translation": "在同一批孩子身上，这样我们能形成一种交叉证据：看，我们可以用七种不同方式观察同一个孩子。",
+    "start": 3030,
+    "end": 3041,
+    "window": "50:30–50:41",
+    "duration": "11 SEC",
+    "transcript": "The scientists at C-Path can, and they can build these tools like we just did.",
+    "translation": "C-Path 的科学家可以访问，并能像刚才那样构建这些工具。",
     "pronunciation": [
       {
         "label": "LINK",
-        "text": "kids_so that · proof_of · look_at",
-        "note": "kids 的 /z/ 连到 so；proof of 中 /f/ 轻连元音；look at 不停顿。"
+        "text": "scientists_at · can_and · tools_like",
+        "note": "scientists 的 /s/ 连到 at；can and 弱读并连起；tools like 中 /z/ 连到 /l/。"
       },
       {
         "label": "STRESS",
-        "text": "SAME kids · SAME kid · SEVen DIFFerent WAYS",
-        "note": "重复的 same 与 seven different ways 是论证锚点，重读而非平均用力。"
+        "text": "SCIENtists · C-PATH · BUILD · TOOLS",
+        "note": "重音落在谁有权限及可交付物；can 在自然语流中弱读。"
       }
     ]
   },
   "speaking": {
-    "prompt": "情境：一个罕见 DEE 资产在小型早期研究中显示 CSF 蛋白 readout 改变，但与发作日记、CGI 或功能结局的联系尚不清楚。项目团队称其为 target engagement，建议 BD 优先级上调。你在 global BD meeting 中发言：先仅用 Position → Evidence → Risk/Uncertainty → Action/Ask 四个 bullet 准备，不写完整稿；录三遍 90 秒 → 60 秒 → 45 秒。随后进行 22 分钟口头模拟：每个 follow-up 连续回答 3 次（每次约 2 分钟），最后用 4 分钟作 investment-summary，明确 Translational、Clinical 和 BD 的 owner。当天累计开口至少 19 分钟。",
+    "prompt": "情境：一个 DEE 资产的外部自然史数据集很丰富，但仅部分受试者的 consent 覆盖二次使用；卖方提供了基于全库构建的 trial-simulation tool，并主张可降低 Phase 2 设计风险。你在 global BD meeting 中发言：先仅用 Position → Evidence → Risk/Uncertainty → Action/Ask 四个 bullet 准备，不写完整稿；录三遍 90 秒 → 60 秒 → 45 秒。随后进行 22 分钟口头模拟：每个 follow-up 连续回答 3 次（每次约 2 分钟），最后用 4 分钟作 investment-summary，明确 Data Governance、Clinical 和 BD 的 owner。当天累计开口至少 19 分钟。",
     "prepLabels": [
       {
         "key": "position",
         "label": "POSITION",
-        "placeholder": "你是否接受该 readout 作为 decision-enabling evidence"
+        "placeholder": "是否把 simulation tool 视为 design-enabling，而非直接替代外部对照证据"
       },
       {
         "key": "evidence",
         "label": "EVIDENCE",
-        "placeholder": "现有 readout 的分析可靠性、时序和临床锚定实际支持什么"
+        "placeholder": "工具覆盖了哪些患者、终点和时间窗；模型与原始数据的谱系是什么"
       },
       {
         "key": "risk",
         "label": "RISK / UNCERTAINTY",
-        "placeholder": "target engagement、PD change 与临床获益之间还缺哪一环"
+        "placeholder": "consent 覆盖、可复核性、代表性及模型外推还缺哪一环"
       },
       {
         "key": "action",
         "label": "ACTION / ASK",
-        "placeholder": "需要哪个 owner 在何时拿出什么预设分析或外部验证"
+        "placeholder": "谁在何时交付 data-access map、再同意覆盖和预设 validation package"
       }
     ],
     "followUps": [
-      "What would you need to see before treating the biomarker as decision-enabling rather than merely pharmacodynamic?",
-      "Could the same biology be true while the program still fails clinically? Walk us through that."
+      "If the tool is public but the underlying patient-level data are not, what exactly can we verify before an investment decision?",
+      "Would you let this tool influence the Phase 2 sample size or external-control strategy? State the boundary clearly."
     ],
-    "meetingMove": "追问依据",
+    "meetingMove": "限定结论",
     "sentenceFrames": [
-      "Can I separate the observation from the claim? What pre-specified evidence links this readout to a clinically meaningful outcome?",
-      "Before we treat this as decision-enabling, I would ask ___ to show ___; otherwise the residual risk is ___."
+      "I would separate a useful design tool from a decision-grade external-control dataset; at this point, the evidence supports ___, not ___.",
+      "The tool may reduce design uncertainty, provided that ___ validates ___; until then, the residual risk is ___."
     ]
   }
 }

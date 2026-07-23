@@ -1,15 +1,15 @@
 {
   "latest": {
     "day": 5,
-    "date": "2026-07-22",
+    "date": "2026-07-23",
     "path": "data/sessions/day-05.json"
   },
   "sessions": [
     {
       "day": 5,
-      "date": "2026-07-22",
-      "mode": "BD · TRANSLATIONAL VALIDITY",
-      "title": "Panel Discussion: Clinical Validation & Biomarkers in Autism Research @Synchrony2020",
+      "date": "2026-07-23",
+      "mode": "BD · DATA ASSET RISK",
+      "title": "2022 RDCA-DAP Workshop: Case Studies Panel Discussion and Q&A",
       "path": "data/sessions/day-05.json"
     },
     {
